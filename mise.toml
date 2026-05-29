@@ -1,0 +1,4 @@
+[tools]
+java = "temurin-21"
+quarkus = "latest"
+maven = "3"
