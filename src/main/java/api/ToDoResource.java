@@ -4,6 +4,7 @@ import application.ToDoService;
 import application.services.todo.model.CreateToDoRequestDto;
 import application.services.todo.model.CreateToDoResponseDto;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -18,7 +19,7 @@ public class ToDoResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CreateToDoResponseDto createTodo(CreateToDoRequestDto createToDoRequestDto) {
+    public CreateToDoResponseDto createTodo(@Valid CreateToDoRequestDto createToDoRequestDto) {
         return toDoService.createTodo(createToDoRequestDto);
     }
 
@@ -39,7 +40,7 @@ public class ToDoResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CreateToDoResponseDto updateTodo(@PathParam("id")Long id, CreateToDoRequestDto createToDoRequestDto) {
+    public CreateToDoResponseDto updateTodo(@PathParam("id") Long id, @Valid CreateToDoRequestDto createToDoRequestDto) {
         return toDoService.updateTodo(id, createToDoRequestDto.description());
     }
 
